@@ -1,99 +1,95 @@
 <!DOCTYPE html>
 <html lang="pt">
-
 <head>
   <meta charset="UTF-8">
-  <title>Munique</title>
+  <title>Informação - Munique</title>
   <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+  <!-- Header + Nav (igual ao Home) -->
   <header>
     <h1>Munique</h1>
-  </header>
-  <main>
     <nav>
       <a href="index.html">Home</a>
       <a href="local.html">Localização</a>
       <a href="multimedia.html">Multimédia</a>
       <a href="info.html">Informação</a>
     </nav>
+  </header>
 
+  <!-- Main (caixa branca central) -->
+  <main>
     <h2>Informações</h2>
-    <p>Nesta secção vamos partilhar 5 curiosidades fascinantes sobre Munique que revelam tradições, histórias e
-      particularidades únicas da cidade.</p>
+    <p>
+      Nesta secção vamos partilhar 5 curiosidades fascinantes sobre Munique que revelam tradições,
+      histórias e particularidades únicas da cidade.
+    </p>
 
+    <!-- Tabela (sem estilos inline; usa o teu CSS de tabela) -->
     <section id="tabela-munique">
       <h2>Tabela de Dados e Eventos Relevantes por Ano</h2>
-      <table border="1" style="border-collapse: collapse; width: 100%; margin-top: 20px;">
-        <tr>
-          <th rowspan="2" style="padding: 10px; background-color: green; color: white;">Ano</th>
-          <th colspan="2" style="padding: 10px; background-color: green; color: white;">Dados</th>
-          <th rowspan="2" style="padding: 10px; background-color: green; color: white;">Evento Relevante</th>
-        </tr>
-        <tr>
-          <th style="padding: 10px; background-color: grey;">População</th>
-          <th style="padding: 10px; background-color: grey;">Densidade (hab/km²)</th>
-        </tr>
-        <tr>
-          <td style="padding: 10px;">2020</td>
-          <td style="padding: 10px;">1.500.000</td>
-          <td style="padding: 10px;">4.839</td>
-          <td style="padding: 10px;">Munique enfrenta restrições devido à pandemia de COVID-19; Oktoberfest cancelado.
-          </td>
-        </tr>
-        <tr>
-          <td style="padding: 10px;">2021</td>
-          <td style="padding: 10px;">1.510.000</td>
-          <td style="padding: 10px;">4.871</td>
-          <td style="padding: 10px;">Reabertura gradual de museus e atrações turísticas; eventos culturais adaptados à
-            pandemia.</td>
-        </tr>
-        <tr>
-          <td style="padding: 10px;">2022</td>
-          <td style="padding: 10px;">1.520.000</td>
-          <td style="padding: 10px;">4.903</td>
-          <td style="padding: 10px;">Início de projetos urbanos verdes, incluindo expansão de ciclovias e espaços
-            públicos.</td>
-        </tr>
-        <tr>
-          <td style="padding: 10px;">2023</td>
-          <td style="padding: 10px;">1.530.000</td>
-          <td style="padding: 10px;">4.935</td>
-          <td style="padding: 10px;">Celebração dos 50 anos do Museu BMW; destaque internacional em design automotivo.
-          </td>
-        </tr>
-        <tr>
-          <td style="padding: 10px;">2024</td>
-          <td style="padding: 10px;">1.540.000</td>
-          <td style="padding: 10px;">4.968</td>
-          <td style="padding: 10px;">Grande festival cultural e esportivo na Marienplatz; foco em sustentabilidade
-            urbana.</td>
-        </tr>
+      <table>
+        <thead>
+          <tr>
+            <th rowspan="2">Ano</th>
+            <th colspan="2">Dados</th>
+            <th rowspan="2">Evento Relevante</th>
+          </tr>
+          <tr>
+            <th>População</th>
+            <th>Densidade (hab/km²)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>2020</td>
+            <td>1.500.000</td>
+            <td>4.839</td>
+            <td>Restrições COVID-19; Oktoberfest cancelado.</td>
+          </tr>
+          <tr>
+            <td>2021</td>
+            <td>1.510.000</td>
+            <td>4.871</td>
+            <td>Reabertura gradual de museus e eventos adaptados.</td>
+          </tr>
+          <tr>
+            <td>2022</td>
+            <td>1.520.000</td>
+            <td>4.903</td>
+            <td>Projetos urbanos verdes e expansão de ciclovias.</td>
+          </tr>
+          <tr>
+            <td>2023</td>
+            <td>1.530.000</td>
+            <td>4.935</td>
+            <td>50 anos do Museu BMW; foco em design automotivo.</td>
+          </tr>
+          <tr>
+            <td>2024</td>
+            <td>1.540.000</td>
+            <td>4.968</td>
+            <td>Festival cultural e desportivo na Marienplatz.</td>
+          </tr>
+        </tbody>
       </table>
     </section>
 
+    <!-- Curiosidades -->
     <section id="curiosidades">
       <h2>5 Curiosidades Fascinantes sobre Munique</h2>
-      <p>1 - Oktoberfest mundialmente famoso – É o maior festival de cerveja do mundo, atraindo milhões de visitantes
-        todos
-        os anos desde 1810.</p>
-      <p>2 - Centro tecnológico – Munique é sede de grandes empresas de tecnologia e engenharia, incluindo a BMW e a
-        Siemens.</p>
-      <p>3 - Arquitetura histórica e moderna lado a lado – A Marienplatz contrasta com modernos arranha-céus e espaços
-        culturais contemporâneos.</p>
-      <p>4 - Parques urbanos enormes – O Englischer Garten é um dos maiores parques urbanos do mundo, maior que o
-        Central Park em Nova Iorque.</p>
-      <p>5 - Tradição na cerveja artesanal – A cidade mantém tradições bávaras de produção de cerveja, com mais de 30
-        cervejarias que seguem métodos centenários.</p>
+      <p>1 — Oktoberfest é o maior festival de cerveja do mundo, desde 1810.</p>
+      <p>2 — Centro tecnológico com empresas como BMW e Siemens.</p>
+      <p>3 — Arquitetura histórica e moderna lado a lado (Marienplatz, etc.).</p>
+      <p>4 — Englischer Garten é maior que o Central Park.</p>
+      <p>5 — Tradição forte na cerveja artesanal (30+ cervejarias).</p>
     </section>
 
-    <p>A Cidade que Mais quero visitar!!!</p>
+    <p>A Cidade que mais quero visitar!!!</p>
   </main>
 
   <footer>
     <p>DIW 2025</p>
   </footer>
 </body>
-
 </html>

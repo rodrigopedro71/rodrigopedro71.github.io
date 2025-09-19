@@ -36,17 +36,19 @@ nav {
 
 nav a {
   text-decoration: none;
-  color: green; /* links em verde */
+  color: #ffffff; /* texto branco */
   font-weight: bold;
   padding: 10px 15px;
   border-radius: 5px;
+  background-color: green; /* fundo verde sempre */
   transition: all 0.3s ease;
 }
 
 nav a:hover {
-  background-color: green; /* hover verde */
-  color: white;
+  background-color: green; /* verde mais escuro no hover */
+  color: #ffffff;
 }
+
 
 /* --- Main --- */
 main {
@@ -84,10 +86,10 @@ footer {
   color: black; /* texto em preto */
 }
 
-/* --- Seções --- */
+/* --- Secções --- */
 section {
   margin-top: 30px;
-  text-align: left;
+  text-align: middle;
 }
 
 section h2 {
