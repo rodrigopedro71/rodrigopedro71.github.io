@@ -29,23 +29,12 @@
     header h1 {
       font-size: 2.5rem;
     }
-    
-    fotografias {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-    fotografias img {
-      width: 150px;
-      border-radius: 20px;
-    }
 
     nav {
       display: flex;
       justify-content: center;
       gap: 20px;
-      margin-bottom: 20px;
+      margin: 20px 0;
     }
 
     nav a {
@@ -89,14 +78,61 @@
       margin-top: 40px;
       border-top: 1px solid #ccc;
     }
+
+    /* Fotografias */
+    .fotografias {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .fotografias img {
+      width: 150px;
+      border-radius: 20px;
+    }
+
+    /* Poema */
+    .poema p {
+      font-family: Georgia, serif;
+      font-size: 18px;
+      margin: 6px 0;
+    }
+
+    .poema p:nth-child(1) {
+      font-weight: bold;
+      color: darkblue;
+    }
+
+    .poema p:nth-child(even) {
+      color: #555;
+    }
+
+    .poema p:nth-child(odd) {
+      color: #222;
+    }
+
+    .poema p:last-child {
+      font-style: italic;
+      color: darkred;
+    }
+
+    /* Vídeo responsivo */
+    iframe {
+      max-width: 100%;
+      border-radius: 10px;
+    }
   </style>
 </head>
 
 <body>
   <header>
-    <h1>Lisboa</h1>
+    <h1>Munique</h1>
   </header>
+
   <main>
+    <!-- Navegação principal -->
     <nav>
       <a href="index.html">Home</a>
       <a href="local.html">Localização</a>
@@ -104,24 +140,72 @@
       <a href="info.html">Informação</a>
     </nav>
 
-    <h2>Multimedia</h2>
-    <p>Nesta página encontra conteúdos multimedia</p>
-    <section>
-      <h3>Fotografias</h3>
-      <div class="fotografias">
-        <img src="images/foto1.jpg" alt="batata">
-        <img src="images/foto2.jpg" alt="batata">
-        <img src="images/foto3.jpg" alt="batata">
-        <img src="images/foto4.jpg" alt="batata">
-        <img src="images/foto5.jpg" alt="batata">
-        <img src="images/foto6.jpg" alt="batata">
-        <img src="images/foto7.jpg" alt="batata">
-        <img src="images/foto8.jpg" alt="batata">
+    <!-- Secção multimédia -->
+    <section id="multimedia">
+      <h2>Multimédia</h2>
+      <p>Nesta página encontra conteúdos multimédia</p>
 
-      </div>
+      <!-- Navegação interna -->
+      <nav>
+        <a href="#fotografias">Fotografias</a>
+        <a href="#video">Vídeo</a>
+        <a href="#poema">Poema</a>
+      </nav>
+
+      <!-- Fotografias -->
+      <section id="fotografias">
+        <h3>Fotografias</h3>
+        <div class="fotografias">
+          <img src="images/foto1.jpg" alt="Foto 1">
+          <img src="images/foto2.jpg" alt="Foto 2">
+          <img src="images/foto3.jpg" alt="Foto 3">
+          <img src="images/foto4.jpg" alt="Foto 4">
+          <img src="images/foto5.jpg" alt="Foto 5">
+          <img src="images/foto6.jpg" alt="Foto 6">
+          <img src="images/foto7.jpg" alt="Foto 7">
+          <img src="images/foto8.jpg" alt="Foto 8">
+        </div>
+      </section>
+
+      <!-- Vídeo -->
+      <section id="video">
+        <h3>Vídeo</h3>
+        <iframe width="560" height="315"
+          src="https://www.youtube.com/embed/r2dXQrLwM1Q?si=UeYeGdsjZLiWlr1e"
+          title="YouTube video player" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+        </iframe>
+      </section>
+
+      <!-- Poema -->
+      <section id="poema">
+        <h3>Poema</h3>
+        <div class="poema">
+          <p>Entre Alpes que vigiam de longe,</p>
+          <p>a cidade respira história e futuro.</p>
+          <p>Catedrais erguem-se como vozes do tempo,</p>
+          <p>e o som dos sinos mistura-se ao riso nas praças.</p>
+
+          <p>No coração, a Marienplatz desperta,</p>
+          <p>onde o relógio dança histórias antigas.</p>
+          <p>Cervejas douradas correm como rios de festa,</p>
+          <p>e a música ecoa em cada taberna.</p>
+
+          <p>Munique é verde nos parques infinitos,</p>
+          <p>é arte nos museus que guardam mundos,</p>
+          <p>é ciência, é força, é delicadeza,</p>
+          <p>um mosaico vivo de tradição e modernidade.</p>
+
+          <p>Caminhar por suas ruas</p>
+          <p>é sentir-se entre o ontem e o amanhã:</p>
+          <p>um abraço bávaro</p>
+          <p>que aquece mesmo no inverno mais frio.</p>
+        </div>
+      </section>
     </section>
 
-    <p>A Cidade que Mais quero visitar!!!</p>
+    <p>A cidade que mais quero visitar!!!</p>
   </main>
 
   <footer>
