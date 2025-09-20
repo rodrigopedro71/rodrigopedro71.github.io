@@ -8,16 +8,16 @@
 /* --- Body --- */
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f0f2f5; /* cor de fundo geral */
-  color: black; /* texto padrão */
+  background-color: #f0f2f5;
+  color: black;
   line-height: 1.6;
 }
 
 /* --- Header --- */
 header {
-  background-color: green; /* neutro em vez de vermelho */
+  background-color: #950606;
   color: white;
-  padding: 30px 0;
+  padding: 20px 0;
   text-align: center;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -36,16 +36,16 @@ nav {
 
 nav a {
   text-decoration: none;
-  color: #ffffff; /* texto branco */
+  color: #ffffff;
   font-weight: bold;
   padding: 10px 15px;
   border-radius: 5px;
-  background-color: green; /* fundo verde sempre */
+  background-color: #950606;
   transition: all 0.3s ease;
 }
 
 nav a:hover {
-  background-color: green; /* verde mais escuro no hover */
+  background-color: black;
   color: #ffffff;
 }
 
@@ -53,20 +53,20 @@ nav a:hover {
 /* --- Main --- */
 main {
   max-width: 900px;
-  margin: 30px auto; /* afasta do header e footer */
-  padding: 20px; /* espaço interno */
+  margin: 30px auto;
+  padding: 20px;
   background-color: white;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
-  color: black; /* texto do main em preto */
+  color: black;
 }
 
 /* Títulos dentro do main */
 main h2 {
   margin-bottom: 20px;
   font-size: 1.8rem;
-  color: #333; /* neutro */
+  color: #333;
 }
 
 /* Parágrafos dentro do main */
@@ -83,7 +83,7 @@ footer {
   background-color: #eee;
   margin-top: 40px;
   border-top: 1px solid #ccc;
-  color: black; /* texto em preto */
+  color: black;
 }
 
 /* --- Secções --- */
@@ -93,7 +93,7 @@ section {
 }
 
 section h2 {
-  color: #333; /* neutro */
+  color: #333;
   margin-bottom: 15px;
 }
 
@@ -129,7 +129,7 @@ th, td {
 }
 
 th {
-  background-color: #333; /* neutro */
+  background-color: #333;
   color: white;
 }
 
@@ -148,10 +148,29 @@ table a:hover {
 }
 
 /* --- Poema --- */
-.poema p {
-  margin-bottom: 8px;
-  line-height: 1.5;
-}
+    .poema p {
+      font-family: Georgia, serif;
+      font-size: 18px;
+      margin: 6px 0;
+    }
+
+    .poema p:nth-child(1) {
+      font-weight: bold;
+      color: darkblue;
+    }
+
+    .poema p:nth-child(even) {
+      color: #555;
+    }
+
+    .poema p:nth-child(odd) {
+      color: #222;
+    }
+
+    .poema p:last-child {
+      font-style: italic;
+      color: darkred;
+    }
 
 /* --- Galeria de imagens --- */
 .galeria {
