@@ -2,119 +2,99 @@
 <html lang="pt">
 
 <head>
-  <meta charset="utf-8">
-  <title>Primeira Página</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Arial', sans-serif;
-      line-height: 1.6;
-      background-color: #f5f5f5;
-      color: #333;
-      padding: 20px;
-    }
-
-    header {
-      background-color: #DC052D;
-      color: white;
-      padding: 20px 0;
-      text-align: center;
-      border-radius: 10px;
-      margin-bottom: 20px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    header h1 {
-      font-size: 2.5rem;
-      font-weight: bold;
-    }
-
-    main {
-      background-color: white;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    main p {
-      margin-bottom: 15px;
-    }
-
-    main a {
-      color: #DC052D;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    main a:hover {
-      text-decoration: underline;
-    }
-
-    ul {
-      list-style-type: square;
-      margin-left: 20px;
-      margin-bottom: 20px;
-    }
-
-    li {
-      margin-bottom: 5px;
-    }
-
-    img {
-      display: block;
-      margin: 20px auto;
-      max-width: 100%;
-      height: auto;
-      border-radius: 10px;
-    }
-
-    footer {
-      text-align: center;
-      margin-top: 30px;
-      padding: 10px;
-      font-size: 0.9rem;
-      color: #777;
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <title>Página DIW</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="landing.css" />
 </head>
 
 <body>
-
   <header>
-    <h1>Primeira Página Web!</h1>
+    <div class="wrap">
+      <h1 class="logo">Meu Perfil de DIW</h1>
+      <nav class="menu">
+        <a href="#home">Home</a>
+        <a href="#projetos">Projetos</a>
+        <a href="#diw">DIW</a>
+      </nav>
+      <div class="clear"></div>
+    </div>
   </header>
 
   <main>
-    <p>Eis a minha primeira página Web!</p>
-    <p>
-      Na Unidade Curricular de
-      <a href="https://moodle.ensinolusofona.pt/course/view.php?id=11232">
-        Desenvolvimento de Interfaces Web !
-      </a>
-      abordaremos as seguintes tecnologias Web &#127760;
-    </p>
-    <ul>
-      <li>HTML</li>
-      <li>CSS</li>
-      <li>Javascript</li>
-      <li>React e Next.js</li>
-    </ul>
-    <p>Iremos criar Soluções Criativas!</p>
-    <p><a href="lab1/cidade/index.html">Lab 1</a></p>
-    <p><a href="lab2/cidade/index.html">Lab 2</a></p>
-    <p><a href="lab2/cidade/exercicios.html">exercícios lab 2</a></p>
-    <img src="images/diw.svg" style="width: 800px;" alt="Desenvolvimento de Interfaces Web">
+    <section id="home" class="hero section">
+      <div class="wrap">
+        <h2>Desenvolvimento de Interfaces Web</h2>
+        <p class="lead">HTML, CSS, JavaScript, React e Next.js — criar experiências simples e eficazes.</p>
+        <div class="cta">
+          <a class="btn primary" href="#projetos">Ver Projetos</a>
+          <a class="btn ghost" href="#diw">Saber mais</a>
+        </div>
+        <div class="art">
+          <img src="images/diw.svg" alt="Ilustração DIW" />
+        </div>
+      </div>
+    </section>
+
+    <section id="projetos" class="section">
+      <div class="wrap">
+        <h3>Projetos / Labs</h3>
+        <p class="muted">Alguns exercícios desenvolvidos ao longo da UC.</p>
+        <div class="cards">
+          <a class="card" href="lab1/cidade/index.html">
+            <strong>Lab 1</strong>
+            <span>Estrutura base e semântica</span>
+          </a>
+          <a class="card" href="lab2/cidade/index.html">
+            <strong>Lab 2</strong>
+            <span>Estilos e layout responsivo</span>
+          </a>
+          <a class="card" href="lab3/cidade/index.html">
+            <strong>Lab 3</strong>
+            <span>Interatividade com JS</span>
+          </a>
+        </div>
+        <div class="clear"></div>
+      </div>
+    </section>
+
+    <section id="diw" class="section">
+      <div class="wrap">
+        <aside class="aside">
+          <div class="stat">
+            <div class="kpi">2025</div>
+            <div class="label">Ano letivo</div>
+          </div>
+          <div class="stat">
+            <div class="kpi">3</div>
+            <div class="label">Labs</div>
+          </div>
+          <div class="stat">
+            <div class="kpi">∞</div>
+            <div class="label">Ideias</div>
+          </div>
+        </aside>
+        <h3>Sobre a disciplina</h3>
+        <p>Na UC de <strong>Desenvolvimento de Interfaces Web</strong> trabalhamos a construção de páginas acessíveis e
+          bem estruturadas, com foco na base:</p>
+        <ul class="lista">
+          <li>HTML5</li>
+          <li>CSS</li>
+          <li>JavaScript</li>
+          <li>React e Next.js</li>
+        </ul>
+        <p>Mais informação no site do <a href="https://moodle.ensinolusofona.pt/course/view.php?id=11232" target="_blank"
+            rel="noopener">Moodle</a> da Lusófona.</p>
+        <div class="clear"></div>
+      </div>
+    </section>
   </main>
 
   <footer>
-    <p>Universidade Lusófona © 2025</p>
+    <div class="wrap">
+      <p>DIW © 2025</p>
+    </div>
   </footer>
-
 </body>
 
 </html>

@@ -1,0 +1,189 @@
+/* --- Reset básico --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* --- Body --- */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f2f5;
+  color: black;
+  line-height: 1.6;
+}
+
+/* --- Header --- */
+header {
+  background-color: #950606;
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+  font-size: 2.5rem;
+}
+
+/* --- Navegação --- */
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: bold;
+  padding: 10px 15px;
+  border-radius: 5px;
+  background-color: #950606;
+  transition: all 0.3s ease;
+}
+
+nav a:hover {
+  background-color: black;
+  color: #ffffff;
+}
+
+
+/* --- Main --- */
+main {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  color: black;
+}
+
+/* Títulos dentro do main */
+main h2 {
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+  color: #333;
+}
+
+/* Parágrafos dentro do main */
+main p {
+  font-size: 1.2rem;
+  margin-top: 15px;
+  color: black;
+}
+
+/* --- Footer --- */
+footer {
+  text-align: center;
+  padding: 15px;
+  background-color: #eee;
+  margin-top: 40px;
+  border-top: 1px solid #ccc;
+  color: black;
+}
+
+/* --- Secções --- */
+section {
+  margin-top: 30px;
+  text-align: middle;
+}
+
+section h2 {
+  color: #333;
+  margin-bottom: 15px;
+}
+
+/* --- Curiosidades --- */
+#curiosidades p {
+  margin-bottom: 10px;
+}
+
+/* --- Fotografias --- */
+.fotografias {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.fotografias img {
+  width: 150px;
+  border-radius: 20px;
+}
+
+/* --- Tabela --- */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 20px;
+}
+
+th, td {
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+th {
+  background-color: #333;
+  color: white;
+}
+
+tr:nth-child(even) td {
+  background-color: #f0f2f5;
+}
+
+/* --- Links dentro da tabela --- */
+table a {
+  color: green;
+  text-decoration: none;
+}
+
+table a:hover {
+  text-decoration: underline;
+}
+
+/* --- Poema --- */
+    .poema p {
+      font-family: Georgia, serif;
+      font-size: 18px;
+      margin: 6px 0;
+    }
+
+    .poema p:nth-child(1) {
+      font-weight: bold;
+      color: darkblue;
+    }
+
+    .poema p:nth-child(even) {
+      color: #555;
+    }
+
+    .poema p:nth-child(odd) {
+      color: #222;
+    }
+
+    .poema p:last-child {
+      font-style: italic;
+      color: darkred;
+    }
+
+/* --- Galeria de imagens --- */
+.galeria {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin: 20px auto;
+  max-width: 1000px;
+}
+
+.galeria img {
+  width: 32%;
+  height: auto;
+  border-radius: 10px;
+}
+
