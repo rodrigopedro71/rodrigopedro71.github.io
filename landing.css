@@ -12,7 +12,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.6;
   color: #222;
-  background: #f6f7fb;
+  background: linear-gradient(180deg, #FFE4B5, #FFB6C1);
 }
 
 .wrap {
@@ -93,7 +93,7 @@ header {
   border-radius: 10px;
   border: 1px solid #e5e7ef;
   color: #1a1a1a;
-  background: #fff;
+  background: #ffffff;
   margin-right: 8px;
   font-weight: bold;
 }
@@ -144,7 +144,7 @@ h3 {
   text-align: left;
   text-decoration: none;
   color: inherit;
-  background: #fff;
+  background: #FFB6C1;
   border: 1px solid #e6e7f0;
   border-radius: 12px;
   padding: 14px 16px;
@@ -174,7 +174,7 @@ h3 {
 }
 
 .stat {
-  background: #fff;
+  background: #FFB6C1;
   border: 1px solid #e6e7f0;
   border-radius: 12px;
   padding: 14px 16px;
@@ -202,7 +202,7 @@ h3 {
 }
 
 a {
-  color: #ffb1e8;
+  color: #db009a;
 }
 
 a:hover {
