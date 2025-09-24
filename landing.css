@@ -12,7 +12,15 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.6;
   color: #222;
-  background: linear-gradient(180deg, #FFE4B5, #FFB6C1);
+   background: linear-gradient(
+    to bottom,
+    #FFE4B5 0%,
+    #FFE4B5 25%,
+    #FFE4B5 50%,
+    #C7CEEA 75%,
+    #C7CEEA 100%
+  );
+  background-attachment: fixed;
 }
 
 .wrap {
