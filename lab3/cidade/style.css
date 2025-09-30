@@ -1,189 +1,183 @@
-/* --- Reset básico --- */
+/* ===== Base do site ===== */
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
+  margin: 0;
+  padding: 0
 }
 
-/* --- Body --- */
+:root {
+  --brand: #950606;
+  --ink: #222;
+  --bg: #f5f5f5
+}
+
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f0f2f5;
-  color: black;
+  font-family: Arial, Helvetica, sans-serif;
   line-height: 1.6;
+  color: var(--ink);
+  background: var(--bg)
 }
 
-/* --- Header --- */
 header {
-  background-color: #950606;
-  color: white;
-  padding: 20px 0;
+  background: var(--brand);
+  color: #fff;
   text-align: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 16px
 }
 
 header h1 {
-  font-size: 2.5rem;
+  font-size: 1.8rem;
+  margin-bottom: 8px
 }
 
-/* --- Navegação --- */
 nav {
   display: flex;
   justify-content: center;
-  gap: 20px;
-  margin-bottom: 20px;
+  gap: 8px;
+  flex-wrap: wrap
 }
 
 nav a {
-  text-decoration: none;
-  color: #ffffff;
-  font-weight: bold;
-  padding: 10px 15px;
-  border-radius: 5px;
-  background-color: #950606;
-  transition: all 0.3s ease;
+  color: #fff;
+  background: var(--brand);
+  border: 2px solid #fff;
+  padding: 8px 12px;
+  border-radius: 8px;
+  text-decoration: none
 }
 
-nav a:hover {
-  background-color: black;
-  color: #ffffff;
+nav a[aria-current="page"] {
+  filter: brightness(.9)
 }
 
-
-/* --- Main --- */
 main {
-  max-width: 900px;
-  margin: 30px auto;
-  padding: 20px;
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  color: black;
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 0 12px
 }
 
-/* Títulos dentro do main */
-main h2 {
-  margin-bottom: 20px;
-  font-size: 1.8rem;
-  color: #333;
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 14px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, .06)
 }
 
-/* Parágrafos dentro do main */
-main p {
-  font-size: 1.2rem;
-  margin-top: 15px;
-  color: black;
-}
-
-/* --- Footer --- */
 footer {
+  margin: 24px 0;
   text-align: center;
-  padding: 15px;
-  background-color: #eee;
-  margin-top: 40px;
-  border-top: 1px solid #ccc;
-  color: black;
+  color: #555
 }
 
-/* --- Secções --- */
-section {
-  margin-top: 30px;
-  text-align: middle;
+/* ===== Utilitários ===== */
+.bullets {
+  margin-left: 18px
 }
 
-section h2 {
-  color: #333;
-  margin-bottom: 15px;
+.bullets li {
+  margin: 6px 0
 }
 
-/* --- Curiosidades --- */
-#curiosidades p {
-  margin-bottom: 10px;
+.tip {
+  margin-top: 8px
 }
 
-/* --- Fotografias --- */
-.fotografias {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
-  margin-top: 10px;
-}
-
-.fotografias img {
-  width: 150px;
-  border-radius: 20px;
-}
-
-/* --- Tabela --- */
+/* ===== Tabela ===== */
 table {
   border-collapse: collapse;
   width: 100%;
-  margin-top: 20px;
+  margin-top: 10px
 }
 
-th, td {
-  padding: 10px;
+th,
+td {
   border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left
 }
 
 th {
-  background-color: #333;
-  color: white;
+  background: #333;
+  color: #fff
 }
 
-tr:nth-child(even) td {
-  background-color: #f0f2f5;
+tbody tr:nth-child(even) td {
+  background: #f0f2f5
 }
 
-/* --- Links dentro da tabela --- */
-table a {
-  color: green;
-  text-decoration: none;
+/* ===== Layout INFO (CSS Grid) ===== */
+.grid-info {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  grid-template-areas:
+    "gi-header gi-header gi-header"
+    "gi-hero   gi-main   gi-sidebar"
+    "gi-hero   gi-extra  gi-sidebar"
+    "gi-rel1   gi-rel2   gi-rel2"
+    "gi-footer gi-footer gi-footer";
+  gap: 14px;
 }
 
-table a:hover {
-  text-decoration: underline;
+/* Áreas */
+.gi-header {
+  grid-area: gi-header
 }
 
-/* --- Poema --- */
-    .poema p {
-      font-family: Georgia, serif;
-      font-size: 18px;
-      margin: 6px 0;
-    }
-
-    .poema p:nth-child(1) {
-      font-weight: bold;
-      color: darkblue;
-    }
-
-    .poema p:nth-child(even) {
-      color: #555;
-    }
-
-    .poema p:nth-child(odd) {
-      color: #222;
-    }
-
-    .poema p:last-child {
-      font-style: italic;
-      color: darkred;
-    }
-
-/* --- Galeria de imagens --- */
-.galeria {
-  display: flex;
-  justify-content: center;
-  gap: 5px;
-  margin: 20px auto;
-  max-width: 1000px;
+.gi-hero {
+  grid-area: gi-hero
 }
 
-.galeria img {
-  width: 32%;
+.gi-main {
+  grid-area: gi-main
+}
+
+.gi-sidebar {
+  grid-area: gi-sidebar
+}
+
+.gi-extra {
+  grid-area: gi-extra
+}
+
+.gi-rel1 {
+  grid-area: gi-rel1
+}
+
+.gi-rel2 {
+  grid-area: gi-rel2
+}
+
+.gi-footer {
+  grid-area: gi-footer
+}
+
+/* Imagens dentro das figuras */
+.gi-hero img,
+.gi-rel1 img {
+  width: 100%;
   height: auto;
   border-radius: 10px;
+  display: block
 }
 
+figcaption {
+  font-size: .9rem;
+  color: #555;
+  margin-top: 6px
+}
+
+/* ===== Responsivo ===== */
+@media (max-width:900px) {
+  .grid-info {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "gi-header"
+      "gi-hero"
+      "gi-main"
+      "gi-sidebar"
+      "gi-extra"
+      "gi-rel1"
+      "gi-rel2"
+      "gi-footer";
+  }
+}

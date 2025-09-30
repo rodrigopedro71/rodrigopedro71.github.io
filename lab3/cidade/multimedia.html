@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt">
-
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Multimédia - Munique</title>
   <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-  <!-- Header + Nav (igual ao Home) -->
   <header>
     <h1>Munique</h1>
     <nav>
@@ -19,20 +17,19 @@
     </nav>
   </header>
 
-  <!-- Main (caixa branca central) -->
   <main>
     <h2>Multimédia</h2>
     <p>Nesta página encontra conteúdos multimédia.</p>
 
-    <!-- Navegação interna -->
-    <nav>
+    <!-- Navegação interna (caixas verdes) -->
+    <nav class="subnav">
       <a href="#fotografias">Fotografias</a>
       <a href="#video">Vídeo</a>
       <a href="#poema">Poema</a>
     </nav>
 
     <!-- Fotografias -->
-    <section id="fotografias">
+    <section id="fotografias" class="sec sec--azul">
       <h3>Fotografias</h3>
       <div class="fotografias">
         <img src="images/foto1.jpg" alt="Foto 1">
@@ -47,34 +44,34 @@
     </section>
 
     <!-- Vídeo -->
-    <section id="video">
+    <section id="video" class="sec sec--amarelo">
       <h3>Vídeo</h3>
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/r2dXQrLwM1Q?si=UeYeGdsjZLiWlr1e"
-        title="YouTube video player" frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-      </iframe>
+      <div class="video-wrap">
+        <iframe
+          src="https://www.youtube.com/embed/r2dXQrLwM1Q?si=UeYeGdsjZLiWlr1e"
+          title="YouTube video player" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
     </section>
 
     <!-- Poema -->
-    <section id="poema">
+    <section id="poema" class="sec sec--cinza">
       <h3>Poema</h3>
       <div class="poema">
         <p>Entre Alpes que vigiam de longe,</p>
         <p>a cidade respira história e futuro.</p>
         <p>Catedrais erguem-se como vozes do tempo,</p>
         <p>e o som dos sinos mistura-se ao riso nas praças.</p>
-
         <p>No coração, a Marienplatz desperta,</p>
         <p>onde o relógio dança histórias antigas.</p>
         <p>Cervejas douradas correm como rios de festa,</p>
         <p>e a música ecoa em cada taberna.</p>
-
         <p>Munique é verde nos parques infinitos,</p>
         <p>é arte nos museus que guardam mundos,</p>
         <p>é ciência, é força, é delicadeza,</p>
         <p>um mosaico vivo de tradição e modernidade.</p>
-
         <p>Caminhar por suas ruas</p>
         <p>é sentir-se entre o ontem e o amanhã:</p>
         <p>um abraço bávaro</p>
@@ -82,12 +79,8 @@
       </div>
     </section>
 
-  </main>
-
-  <!-- Footer -->
-  <footer>
-    <p>DIW 2025</p>
-  </footer>
-</body>
-
-</html>
+    <!-- Transition demo -->
+    <section class="sec">
+      <h3>Transition</h3>
+      <p>Passe o rato sobre o quadrado:</p>
+      <div class="box-transition"></div

@@ -2,91 +2,137 @@
 <html lang="pt">
 
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Informação - Munique</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-  <!-- Header + Nav (igual ao Home) -->
+  <!-- Header + Nav (comum a todas as páginas) -->
   <header>
     <h1>Munique</h1>
     <nav>
       <a href="index.html">Home</a>
       <a href="local.html">Localização</a>
       <a href="multimedia.html">Multimédia</a>
-      <a href="info.html">Informação</a>
+      <a href="info.html" aria-current="page">Informação</a>
     </nav>
   </header>
 
-  <!-- Main (caixa branca central) -->
   <main>
-    <h2>Informações</h2>
-    <p>
-      Nesta secção vamos partilhar 5 curiosidades fascinantes sobre Munique que revelam tradições,
-      histórias e particularidades únicas da cidade.
-    </p>
+    <!-- Grelha principal desta página -->
+    <div class="grid-info">
+      <!-- Cabeçalho local -->
+      <section class="gi-header card">
+        <h2>Informações</h2>
+        <p>Nesta secção encontras dados rápidos, curiosidades e ligações úteis para perceber melhor a cidade de Munique.
+        </p>
+      </section>
 
-    <!-- Tabela (sem estilos inline; usa o teu CSS de tabela) -->
-    <section id="tabela-munique">
-      <h2>Tabela de Dados e Eventos Relevantes por Ano</h2>
-      <table>
-        <thead>
-          <tr>
-            <th rowspan="2">Ano</th>
-            <th colspan="2">Dados</th>
-            <th rowspan="2">Evento Relevante</th>
-          </tr>
-          <tr>
-            <th>População</th>
-            <th>Densidade (hab/km²)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>2020</td>
-            <td>1.500.000</td>
-            <td>4.839</td>
-            <td>Restrições COVID-19; Oktoberfest cancelado.</td>
-          </tr>
-          <tr>
-            <td>2021</td>
-            <td>1.510.000</td>
-            <td>4.871</td>
-            <td>Reabertura gradual de museus e eventos adaptados.</td>
-          </tr>
-          <tr>
-            <td>2022</td>
-            <td>1.520.000</td>
-            <td>4.903</td>
-            <td>Projetos urbanos verdes e expansão de ciclovias.</td>
-          </tr>
-          <tr>
-            <td>2023</td>
-            <td>1.530.000</td>
-            <td>4.935</td>
-            <td>50 anos do Museu BMW; foco em design automotivo.</td>
-          </tr>
-          <tr>
-            <td>2024</td>
-            <td>1.540.000</td>
-            <td>4.968</td>
-            <td>Festival cultural e desportivo na Marienplatz.</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
+      <!-- Imagem/hero lateral -->
+      <figure class="gi-hero card">
+        <img src="images/foto2.jpg" alt="Centro histórico de Munique (Marienplatz)" />
+        <figcaption>Marienplatz e o Neues Rathaus.</figcaption>
+      </figure>
 
-    <!-- Curiosidades -->
-    <section id="curiosidades">
-      <h2>5 Curiosidades Fascinantes sobre Munique</h2>
-      <p>1 — Oktoberfest é o maior festival de cerveja do mundo, desde 1810.</p>
-      <p>2 — Centro tecnológico com empresas como BMW e Siemens.</p>
-      <p>3 — Arquitetura histórica e moderna lado a lado (Marienplatz, etc.).</p>
-      <p>4 — Englischer Garten é maior que o Central Park.</p>
-      <p>5 — Tradição forte na cerveja artesanal (30+ cervejarias).</p>
-    </section>
+      <!-- Conteúdo principal -->
+      <section class="gi-main card">
+        <h3>Visão geral</h3>
+        <p>Munique é a capital da Baviera e a 3.ª maior cidade da Alemanha, conhecida pela combinação de tradição bávara
+          e inovação tecnológica.</p>
+        <ul class="bullets">
+          <li><strong>Economia:</strong> polo tecnológico/industrial (BMW, Siemens, Allianz).</li>
+          <li><strong>Cultura:</strong> museus de referência (Deutsches Museum, Pinakotheken) e fortes tradições.</li>
+          <li><strong>Verde:</strong> Englischer Garten e margens do rio Isar para lazer ao ar livre.</li>
+          <li><strong>Desporto:</strong> casa do FC Bayern e palco de grandes eventos.</li>
+          <li><strong>Transporte:</strong> U-Bahn, S-Bahn, elétricos, ciclovias e centro acessível a pé.</li>
+        </ul>
+      </section>
 
+      <!-- Sidebar com factos rápidos -->
+      <aside class="gi-sidebar card">
+        <h3>Factos rápidos</h3>
+        <ul class="bullets">
+          <li>População ~1,5M</li>
+          <li>Fundação: séc. XII</li>
+          <li>Rio: Isar</li>
+          <li>Universidades: LMU e TUM</li>
+          <li>Evento: Oktoberfest (set–out)</li>
+        </ul>
+        <p class="tip">Precisas de imagens? Vê o <a href="https://pixabay.com" target="_blank"
+            rel="noopener">Pixabay</a>.</p>
+      </aside>
+
+      <!-- Tabela de dados -->
+      <section class="gi-extra card" id="tabela-munique">
+        <h3>Dados e eventos por ano</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Ano</th>
+              <th>População</th>
+              <th>Densidade (hab/km²)</th>
+              <th>Evento Relevante</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>2020</td>
+              <td>1.500.000</td>
+              <td>4.839</td>
+              <td>COVID-19; Oktoberfest cancelado.</td>
+            </tr>
+            <tr>
+              <td>2021</td>
+              <td>1.510.000</td>
+              <td>4.871</td>
+              <td>Reabertura gradual de eventos.</td>
+            </tr>
+            <tr>
+              <td>2022</td>
+              <td>1.520.000</td>
+              <td>4.903</td>
+              <td>Expansão de ciclovias e projetos verdes.</td>
+            </tr>
+            <tr>
+              <td>2023</td>
+              <td>1.530.000</td>
+              <td>4.935</td>
+              <td>50 anos do Museu BMW.</td>
+            </tr>
+            <tr>
+              <td>2024</td>
+              <td>1.540.000</td>
+              <td>4.968</td>
+              <td>Festival cultural na Marienplatz.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Imagem relacionada -->
+      <figure class="gi-rel1 card">
+        <img src="images/foto3.jpg" alt="Parques e áreas ribeirinhas do Isar" />
+        <figcaption>Englischer Garten e margens do Isar.</figcaption>
+      </figure>
+
+      <!-- Curiosidades -->
+      <section class="gi-rel2 card" id="curiosidades">
+        <h3>Curiosidades</h3>
+        <p>1 — Oktoberfest é o maior festival de cerveja do mundo (desde 1810).</p>
+        <p>2 — Englischer Garten é maior do que o Central Park.</p>
+        <p>3 — Arquitetura gótica, barroca e moderna convivem lado a lado.</p>
+        <p>4 — Forte ecossistema de startups e investigação (TUM/LMU).</p>
+        <p>5 — Repetidamente classificada entre as cidades com melhor qualidade de vida na Europa.</p>
+      </section>
+
+      <!-- Rodapé local da grelha -->
+      <div class="gi-footer card">
+        <small>Dica: reserva um dia para museus (Pinakothek der Moderne + Deutsches Museum) e outro para percursos
+          verdes ao longo do Isar.</small>
+      </div>
+    </div>
   </main>
 
   <footer>
