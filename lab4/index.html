@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercício de Eventos</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="scripts/main.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Bem-vindo ao meu teste de eventos!</h1>
+    </header>
+
+    <main>
+        <section>
+            <p id="passa" onmouseover="passaPorAqui()" onmouseout="saiDaqui()">1. Passa por aqui!</p>
+
+            <p id="pintaTexto" style="color: red;">2. Pinta-me!
+                <button onclick="mudaCor('red')">Red</button>
+                <button onclick="mudaCor('green')">Green</button>
+                <button onclick="mudaCor('blue')">Blue</button>
+            </p>
+
+            <p>3. Experimenta escrever... 
+                <input type="text" id="campoTexto" onmousemove="mostraMensagem()" oninput="mostraTexto()">
+                <span id="mostra"></span>
+            </p>
+
+            <p>4. Escolha uma cor em inglês: 
+                <input type="text" id="corEscolhida">
+                <button onclick="aplicarCor()">submeter</button>
+            </p>
+
+            <!-- Aqui está o botão que deve funcionar -->
+            <p>5. <button onclick="contar()">Conta!</button> 
+                <span id="contador">0</span>
+            </p>
+
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Example.svg/800px-Example.svg.png" 
+                 alt="Exemplo" 
+                 width="150" 
+                 id="imagem"
+                 onmouseover="imagemMaior()" 
+                 onmouseout="imagemNormal()">
+        </section>
+    </main>
+
+    <footer>
+        <p>DIW 2025</p>
+    </footer>
+</body>
+</html>
