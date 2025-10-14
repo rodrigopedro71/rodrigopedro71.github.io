@@ -1,52 +1,205 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt">
 <head>
-    <meta charset="UTF-8">
-    <title>Exercício de Eventos</title>
-    <link rel="stylesheet" href="css/style.css">
-    <script src="scripts/main.js" defer></script>
+  <meta charset="utf-8" />
+  <title>Exemplo Completo com Formulário</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root { --gap: 2rem; }
+    body {
+      font-family: system-ui, sans-serif;
+      padding: var(--gap);
+      transition: background-color 0.3s ease;
+    }
+    section { margin-bottom: var(--gap); }
+    button {
+      cursor: pointer;
+      margin: 0.5rem;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 6px;
+      color: #fff;
+      font-weight: bold;
+      transition: transform 0.2s ease;
+    }
+    button:hover { transform: scale(1.05); }
+    #btn-red { background-color: red; }
+    #btn-green { background-color: green; }
+    #btn-blue { background-color: blue; }
+    #pinta {
+      font-size: 1.5rem;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+    input[type="text"], input[type="number"], select {
+      padding: .6rem .8rem;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      font-size: 1rem;
+      outline: none;
+      transition: background-color .2s ease, border-color .2s ease;
+    }
+    input[type="text"]:focus, select:focus, input[type="number"]:focus { border-color: #aaa; }
+    .inline { display: inline-flex; align-items: center; gap: .75rem; }
+    .badge {
+      display: inline-block;
+      min-width: 2.5ch;
+      text-align: right;
+      padding: .3rem .6rem;
+      border-radius: 8px;
+      background: #f1f1f1;
+      font-variant-numeric: tabular-nums;
+    }
+    .muted { color: #666; font-size: .95rem; }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Bem-vindo ao meu teste de eventos!</h1>
-    </header>
 
-    <main>
-        <section>
-            <p id="passa" onmouseover="passaPorAqui()" onmouseout="saiDaqui()">1. Passa por aqui!</p>
+  <!-- 1) Passa por aqui -->
+  <section>
+    <p id="passa">1. Passa por aqui!</p>
+  </section>
 
-            <p id="pintaTexto" style="color: red;">2. Pinta-me!
-                <button onclick="mudaCor('red')">Red</button>
-                <button onclick="mudaCor('green')">Green</button>
-                <button onclick="mudaCor('blue')">Blue</button>
-            </p>
+  <!-- 2) Pinta-me -->
+  <section id="section-pinta">
+    <p id="pinta">2. Pinta-me!</p>
+    <div>
+      <button id="btn-red"   type="button" data-color="red">Red</button>
+      <button id="btn-green" type="button" data-color="green">Green</button>
+      <button id="btn-blue"  type="button" data-color="blue">Blue</button>
+    </div>
+  </section>
 
-            <p>3. Experimenta escrever... 
-                <input type="text" id="campoTexto" onmousemove="mostraMensagem()" oninput="mostraTexto()">
-                <span id="mostra"></span>
-            </p>
+  <!-- 3) Experimenta escrever -->
+  <section id="section-escreve">
+    <label for="texto-escreve">3. Experimenta escrever...</label>
+    <input id="texto-escreve" type="text" placeholder="Escreve algo aqui" />
+  </section>
 
-            <p>4. Escolha uma cor em inglês: 
-                <input type="text" id="corEscolhida">
-                <button onclick="aplicarCor()">submeter</button>
-            </p>
+  <!-- 4) Escolhe cor de fundo -->
+  <section id="section-cor">
+    <form id="form-cor" class="inline">
+      <label for="select-cor">4. Escolhe uma cor para o fundo:</label>
+      <select id="select-cor" name="cor">
+        <option value="">-- Escolhe uma cor --</option>
+        <option value="red">red</option>
+        <option value="green">green</option>
+        <option value="blue">blue</option>
+        <option value="gold">gold</option>
+        <option value="coral">coral</option>
+        <option value="teal">teal</option>
+        <option value="rebeccapurple">rebeccapurple</option>
+        <option value="white">white</option>
+        <option value="black">black</option>
+      </select>
+      <button type="submit" style="background:#222">Aplicar</button>
+    </form>
+    <p class="muted">A cor de fundo fica guardada (Local Storage).</p>
+  </section>
 
-            <!-- Aqui está o botão que deve funcionar -->
-            <p>5. <button onclick="contar()">Conta!</button> 
-                <span id="contador">0</span>
-            </p>
+  <!-- 5) Contador (versão anterior mantida) -->
+  <section id="section-conta">
+    <div class="inline">
+      <button type="button" id="btn-conta" style="background:#222">Conta!</button>
+      <span>→</span>
+      <span id="contador" class="badge">0</span>
+    </div>
+    <p class="muted">⏱️ Tempo nesta página: <span id="timer">0</span>s</p>
+  </section>
 
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Example.svg/800px-Example.svg.png" 
-                 alt="Exemplo" 
-                 width="150" 
-                 id="imagem"
-                 onmouseover="imagemMaior()" 
-                 onmouseout="imagemNormal()">
-        </section>
-    </main>
+  <!-- 6) Formulário Nome + Idade -->
+  <section id="section-nome">
+    <h3>6. Formulário com Nome e Idade</h3>
+    <form id="form-nome">
+      <input id="nome" type="text" placeholder="insira o seu nome" required />
+      <input id="idade" type="number" placeholder="idade" min="0" required />
+      <button type="submit" style="background:#0077cc">Submit</button>
+    </form>
+    <p id="mensagem"></p>
+  </section>
 
-    <footer>
-        <p>DIW 2025</p>
-    </footer>
+  <script>
+    // 1) Hover no parágrafo
+    const passa = document.querySelector("#passa");
+    passa.addEventListener("mouseover", () => passa.textContent = "1. Obrigado por passares!");
+    passa.addEventListener("mouseout",  () => passa.textContent = "1. Passa por aqui!");
+
+    // 2) Pinta-me
+    const pintaTexto = document.querySelector("#pinta");
+    document.querySelectorAll("[data-color]").forEach(function(btn) {
+      btn.addEventListener("click", function () {
+        pintaTexto.style.color = this.dataset.color;
+      });
+    });
+
+    // 3) Input colorido
+    const inputEscreve = document.querySelector("#texto-escreve");
+    inputEscreve.addEventListener("input", () => {
+      const n = inputEscreve.value.length;
+      const hue = (n * 37) % 360;
+      inputEscreve.style.backgroundColor = `hsl(${hue} 90% 88%)`;
+    });
+
+    // 4) Cor de fundo (select + Local Storage)
+    const formCor   = document.querySelector("#form-cor");
+    const selectCor = document.querySelector("#select-cor");
+    const savedBg = localStorage.getItem("bgColor");
+    if (savedBg) {
+      document.body.style.backgroundColor = savedBg;
+      selectCor.value = savedBg;
+    }
+    formCor.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const cor = selectCor.value.trim().toLowerCase();
+      if (!cor) return;
+      document.body.style.backgroundColor = cor;
+      localStorage.setItem("bgColor", cor);
+    });
+
+    // 5) Contador + tempo (versão anterior mantida)
+    const btnConta = document.querySelector("#btn-conta");
+    const badge = document.querySelector("#contador");
+    const timerEl = document.querySelector("#timer");
+    let count = Number(localStorage.getItem("contador") || 0);
+    badge.textContent = count;
+    btnConta.addEventListener("click", () => {
+      count++;
+      badge.textContent = count;
+      localStorage.setItem("contador", count);
+    });
+    let seconds = 0;
+    setInterval(() => {
+      seconds++;
+      timerEl.textContent = seconds;
+    }, 1000);
+
+    // 6) Formulário Nome + Idade (onsubmit)
+    const formNome = document.querySelector("#form-nome");
+    const campoNome = document.querySelector("#nome");
+    const campoIdade = document.querySelector("#idade");
+    const mensagem = document.querySelector("#mensagem");
+
+    // Repor valores se existirem
+    const nomeGuardado = localStorage.getItem("nome");
+    const idadeGuardada = localStorage.getItem("idade");
+    if (nomeGuardado && idadeGuardada) {
+      campoNome.value = nomeGuardado;
+      campoIdade.value = idadeGuardada;
+      mensagem.textContent = `Olá, o ${nomeGuardado} tem ${idadeGuardada}!`;
+    }
+
+    formNome.onsubmit = (e) => {
+      e.preventDefault();
+      const nome = campoNome.value.trim();
+      const idade = campoIdade.value.trim();
+      if (nome && idade) {
+        mensagem.textContent = `Olá, o ${nome} tem ${idade} anos!`;
+        localStorage.setItem("nome", nome);
+        localStorage.setItem("idade", idade);
+      } else {
+        mensagem.textContent = "⚠️ Preencha ambos os campos.";
+      }
+    };
+  </script>
 </body>
 </html>
