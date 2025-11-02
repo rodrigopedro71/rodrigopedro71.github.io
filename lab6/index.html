@@ -1,122 +1,98 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Loja Exemplo</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Loja — Catálogo</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
+    :root{
+      --bg:#0f1115; --panel:#171a22; --ink:#e9ecf1; --muted:#a8b0bd;
+      --brand:#6dd6ff; --accent:#ffd166; --gap:1rem; --radius:14px;
     }
+    html,body{height:100%}
+    body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Arial}
 
-    header, footer {
-      background-color: #2c3e50;
-      color: white;
-      padding: 1rem;
-      text-align: center;
-    }
+    header, footer{background:var(--panel);box-shadow:0 2px 0 #0a0c10 inset}
+    header{position:sticky;top:0;z-index:10}
+    header, main, footer{padding:clamp(1rem,1.5vw,2rem)}
 
-    nav ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-    }
+    header h1{margin:0;font-size:clamp(1.25rem,2vw,1.75rem)}
+    nav{margin-top:.25rem}
+    nav ul{list-style:none;margin:0;padding:0;display:flex;gap:.75rem;flex-wrap:wrap}
+    nav a{display:inline-block;padding:.5rem .8rem;border-radius:999px;color:var(--ink);text-decoration:none}
+    nav a:hover,nav a:focus{background:#232837;color:var(--brand)}
 
-    nav a {
-      color: white;
-      text-decoration: none;
-    }
+    main{display:grid;gap:var(--gap);grid-template-columns:1fr}
+    @media (min-width:980px){ main{grid-template-columns:2fr 1fr;align-items:start} }
 
-    main {
-      flex: 1;
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 1rem;
-      padding: 1rem;
-    }
+    section, aside{background:var(--panel);border-radius:var(--radius);padding:1rem;
+      box-shadow:0 1px 0 #0a0c10 inset, 0 0 0 1px #0c0f15}
+    section>h2, aside>h2{margin-top:0;font-size:1.15rem}
 
-    section, aside {
-      background-color: #ecf0f1;
-      padding: 1rem;
-      border-radius: 6px;
-    }
+    /* Nó-pai do catálogo: FLEX */
+    #lista-produtos{display:flex;flex-wrap:wrap;gap:var(--gap);align-content:flex-start;min-height:5rem}
 
-    section h2, aside h2 {
-      margin-top: 0;
-    }
+    /* Cartões de produto */
+    article.produto{display:grid;grid-template-rows:auto auto 1fr auto auto;gap:.5rem;
+      width:clamp(14rem,24vw,18rem);background:#1d2230;border:1px solid #242a3b;
+      border-radius:calc(var(--radius) - 4px);padding:.75rem}
+    article.produto img{width:100%;height:160px;object-fit:cover;border-radius:10px;background:#0f131c}
+    article.produto h3{margin:.25rem 0;font-size:1rem}
+    article.produto p{margin:.25rem 0;color:var(--muted)}
+    article.produto .preco{color:var(--ink);font-weight:600}
+    article.produto button{padding:.55rem .8rem;border:0;border-radius:10px;background:var(--brand);
+      color:#00131b;font-weight:700;cursor:pointer}
+    article.produto button:hover{filter:brightness(1.05)}
 
-    .lista-produtos {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    article {
-      background-color: white;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      padding: 1rem;
-      width: 200px;
-      text-align: center;
-    }
-
-    article img {
-      width: 100%;
-      height: auto;
-      border-radius: 4px;
-    }
-
-    footer {
-      font-size: 0.9rem;
-    }
+    /* Cesto */
+    #lista-cesto{display:flex;flex-direction:column;gap:.75rem;min-height:5rem}
+    .resumo-cesto{margin-top:.5rem;display:flex;justify-content:space-between;align-items:center;
+      padding:.6rem .8rem;border-radius:12px;background:#1b2030;color:var(--muted)}
   </style>
 </head>
 <body>
+  <a href="#conteudo" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">Saltar para o conteúdo</a>
+
   <header>
-    <h1>Minha Loja Online</h1>
-    <nav aria-label="Menu principal">
+    <h1>Loja</h1>
+    <nav aria-label="Navegação principal">
       <ul>
-        <li><a href="#">Início</a></li>
-        <li><a href="#">Produtos</a></li>
-        <li><a href="#">Cesto</a></li>
-        <li><a href="#">Contacto</a></li>
+        <li><a href="#produtos">Produtos</a></li>
+        <li><a href="#cesto">Cesto</a></li>
       </ul>
     </nav>
   </header>
 
-  <main>
-    <section aria-labelledby="produtos-titulo">
-      <h2 id="produtos-titulo">Lista de Produtos</h2>
-      <section class="lista-produtos" id="zona-produtos">
-        <!-- Produtos serão inseridos dinamicamente via JavaScript -->
-        <!-- Exemplo de estrutura de produto:
-        <article>
-          <h3>Produto Exemplo</h3>
-          <img src="img/produto.jpg" alt="Imagem do produto exemplo">
-          <p>Descrição breve do produto.</p>
-          <button>Adicionar ao cesto</button>
-        </article>
-        -->
-      </section>
+  <main id="conteudo" role="main">
+    <!-- Catálogo -->
+    <section id="produtos" aria-labelledby="t-prod">
+      <h2 id="t-prod">Produtos</h2>
+      <p id="instrucoes-produtos">Os artigos são carregados dinamicamente.</p>
+      <section id="lista-produtos" aria-live="polite" aria-describedby="instrucoes-produtos"></section>
     </section>
 
-    <aside aria-labelledby="cesto-titulo">
-      <h2 id="cesto-titulo">Cesto de Compras</h2>
-      <section id="zona-cesto">
-        <!-- Itens do cesto inseridos dinamicamente -->
+    <!-- Cesto do utilizador -->
+    <aside id="cesto" aria-labelledby="t-cesto">
+      <h2 id="t-cesto">Cesto</h2>
+      <section id="lista-cesto" aria-live="polite"></section>
+      <section class="resumo-cesto" aria-label="Resumo do cesto">
+        <span>Total:</span>
+        <output id="total" for="">0,00 €</output>
       </section>
     </aside>
   </main>
 
   <footer>
-    <p>&copy; 2025 Minha Loja Online. Todos os direitos reservados.</p>
+    <small>© <time id="ano"></time> — Loja Exemplo</small>
   </footer>
+
+  <!-- Scripts -->
+  <script>
+    const y = new Date().getFullYear();
+    document.getElementById('ano').textContent = y;
+    document.getElementById('ano').setAttribute('datetime', String(y));
+  </script>
+  <script src="produtos.js"></script>
+  <script src="main.js"></script>
 </body>
 </html>
