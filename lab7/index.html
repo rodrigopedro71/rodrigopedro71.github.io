@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="pt">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="css/style.css">
+  <title>Loja — Catálogo</title>
+</head>
+
+<body>
+  <a href="#conteudo" class="skip">Saltar para o conteúdo</a>
+
+  <header>
+    <h1>Loja</h1>
+    <nav aria-label="Navegação principal">
+      <ul>
+        <li><a href="#produtos">Produtos</a></li>
+        <li><a href="#cesto">Cesto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="conteudo" role="main">
+    <!-- Catálogo -->
+    <section id="produtos" aria-labelledby="t-prod">
+      <h2 id="t-prod">Produtos</h2>
+
+      <!-- Barra de controlo (Filtro / Ordenar / Procurar) -->
+      <form id="toolbar" aria-label="Filtrar, ordenar e procurar">
+        <label>
+          <span class="lbl">Filtrar</span>
+          <select id="filtro-categoria">
+            <option value="">Todas as categorias</option>
+          </select>
+        </label>
+
+        <label>
+          <span class="lbl">Ordenar</span>
+          <select id="ordenar-preco">
+            <option value="">Ordenar pelo preço</option>
+            <option value="desc">Preço Decrescente</option>
+            <option value="asc">Preço Crescente</option>
+          </select>
+        </label>
+
+        <label class="grow">
+          <span class="lbl">Procurar</span>
+          <input id="pesquisar" type="search" placeholder="pesquise por produto" autocomplete="off" />
+        </label>
+      </form>
+
+      <p id="instrucoes-produtos">Os artigos são carregados dinamicamente.</p>
+      <section id="lista-produtos" aria-live="polite" aria-describedby="instrucoes-produtos"></section>
+    </section>
+
+    <!-- Cesto do utilizador -->
+    <aside id="cesto" aria-labelledby="t-cesto">
+      <h2 id="t-cesto">Cesto</h2>
+      <section id="lista-cesto" aria-live="polite"></section>
+
+      <section class="resumo-cesto" aria-label="Resumo do cesto">
+        <span>Total:</span>
+        <output id="total">0,00 €</output>
+      </section>
+
+      <!-- Checkout -->
+      <form id="checkout" aria-label="Checkout">
+        <fieldset>
+          <legend>Checkout</legend>
+          <label class="check">
+            <input id="estudante" type="checkbox" />
+            <span>É estudante de DEISI?</span>
+          </label>
+
+          <label>
+            <span class="lbl">Cupão de desconto</span>
+            <input id="cupao" type="text" placeholder="ex.: PROMO10" />
+          </label>
+
+          <button id="comprar" type="button">Comprar</button>
+        </fieldset>
+
+        <output id="resp-compra" aria-live="polite"></output>
+      </form>
+    </aside>
+  </main>
+
+  <footer>
+    <small>© <time id="ano"></time> — Loja Exemplo</small>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    const y = new Date().getFullYear();
+    ano.textContent = y; ano.setAttribute('datetime', String(y));
+  </script>
+  <!-- ATENÇÃO: não incluir produtos.js -->
+  <script src="scripts/main.js"></script>
+</body>
+
+</html>
