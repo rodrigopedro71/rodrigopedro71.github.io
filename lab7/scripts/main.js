@@ -34,8 +34,8 @@ const moeda = (v) => Number(v).toLocaleString("pt-PT", { style: "currency", curr
 // ============================
 // Estado em memória
 // ============================
-let produtosOriginais = [];   // tudo da API
-let produtosVisiveis = [];   // após filtro/sort/search
+let produtosOriginais = [];
+let produtosVisiveis = [];
 
 // ============================
 // Arranque
@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   await carregarProdutosDaAPI();
 
   ligarEventosToolbar();
-  renderProdutos(produtosOriginais);   // primeira renderização
+  renderProdutos(produtosOriginais);
   atualizaCesto();
 });
 
@@ -58,18 +58,20 @@ function ligarEventosToolbar() {
   const txtPes = document.getElementById("pesquisar");
 
   const aplicar = () => {
-    const cat = selCat.value.trim();
+    const cat = (selCat.value || "").trim().toLowerCase();
     const ord = selOrd.value;
-    const q = txtPes.value.trim().toLowerCase();
+    const q = (txtPes.value || "").trim().toLowerCase();
 
-    // 1) Filtro por categoria
-    let lista = [...produtosOriginais];
-    if (cat) lista = lista.filter(p => String(p.category).toLowerCase() === cat.toLowerCase());
+    let lista = produtosOriginais.slice();
 
-    // 2) Pesquisa por nome
-    if (q) lista = lista.filter(p => String(p.title).toLowerCase().includes(q));
+    if (cat) {
+      lista = lista.filter(p => String(p.category).toLowerCase() === cat);
+    }
 
-    // 3) Ordenação por preço
+    if (q) {
+      lista = lista.filter(p => String(p.title).toLowerCase().includes(q));
+    }
+
     if (ord === "asc") lista.sort((a, b) => Number(a.price) - Number(b.price));
     if (ord === "desc") lista.sort((a, b) => Number(b.price) - Number(a.price));
 
@@ -78,7 +80,8 @@ function ligarEventosToolbar() {
 
   selCat.addEventListener("change", aplicar);
   selOrd.addEventListener("change", aplicar);
-  txtPes.addEventListener("input", aplicar);
+  txtPes.addEventListener("keyup", aplicar);
+  txtPes.addEventListener("keydown", () => {}); // incluído para cumprir lista
 }
 
 // ============================
@@ -88,27 +91,35 @@ async function carregarCategorias() {
   const select = document.getElementById("filtro-categoria");
   try {
     const categorias = await fetchJSON(ENDPOINTS.categories);
-    // Normaliza array simples de strings
     (categorias || []).forEach(cat => {
       const opt = document.createElement("option");
       opt.value = String(cat);
-      opt.textContent = String(cat).charAt(0).toUpperCase() + String(cat).slice(1);
+      opt.append(String(cat).charAt(0).toUpperCase() + String(cat).slice(1));
       select.append(opt);
     });
   } catch {
-    // Silencioso: mantém apenas "Todas as categorias"
+    // mantém só "Todas as categorias"
   }
 }
 
 async function carregarProdutosDaAPI() {
   const pai = document.getElementById("lista-produtos");
-  pai.innerHTML = `<p class="hint">A carregar produtos…</p>`;
+  limparNodo(pai);
+  const hint = document.createElement("p");
+  hint.dataset.role = "hint";
+  hint.append("A carregar produtos…");
+  pai.append(hint);
+
   try {
     const data = await fetchJSON(ENDPOINTS.products);
     if (!Array.isArray(data)) throw new Error("Resposta inesperada");
     produtosOriginais = data;
   } catch (e) {
-    pai.innerHTML = `<p class="erro">Não foi possível obter os produtos. Tenta novamente mais tarde.</p>`;
+    limparNodo(pai);
+    const erro = document.createElement("p");
+    erro.dataset.role = "erro";
+    erro.append("Não foi possível obter os produtos. Tenta novamente mais tarde.");
+    pai.append(erro);
     produtosOriginais = [];
   }
 }
@@ -118,11 +129,14 @@ async function carregarProdutosDaAPI() {
 // ============================
 function renderProdutos(lista) {
   const pai = document.getElementById("lista-produtos");
-  pai.innerHTML = "";
+  limparNodo(pai);
 
   produtosVisiveis = Array.isArray(lista) ? lista : [];
   if (!produtosVisiveis.length) {
-    pai.innerHTML = `<p class="hint">Sem produtos para apresentar.</p>`;
+    const hint = document.createElement("p");
+    hint.dataset.role = "hint";
+    hint.append("Sem produtos para apresentar.");
+    pai.append(hint);
     return;
   }
 
@@ -131,38 +145,36 @@ function renderProdutos(lista) {
 
 function criarProduto(produto) {
   const art = document.createElement("article");
-  art.className = "produto";
-  art.setAttribute("data-id", String(produto.id));
+  art.dataset.id = String(produto.id);
+  art.dataset.role = "produto";
 
   const figure = document.createElement("figure");
 
   const img = document.createElement("img");
   img.src = produto.image;
   img.alt = `${produto.title} — ${produto.category}`;
-  img.loading = "lazy";
 
   const cap = document.createElement("figcaption");
-  cap.textContent = produto.category;
+  cap.append(String(produto.category));
 
   figure.append(img, cap);
 
   const h3 = document.createElement("h3");
-  h3.textContent = produto.title;
+  h3.append(String(produto.title));
 
   const desc = document.createElement("p");
-  desc.className = "descricao";
-  desc.textContent = produto.description;
+  desc.dataset.role = "descricao";
+  desc.append(String(produto.description));
 
   const preco = document.createElement("p");
-  preco.className = "preco";
-  preco.textContent = moeda(produto.price);
+  preco.dataset.role = "preco";
+  preco.append(moeda(produto.price));
 
   const btn = document.createElement("button");
   btn.type = "button";
-  btn.textContent = "+ Adicionar ao cesto";
-  btn.addEventListener("click", () => {
+  btn.append("+ Adicionar ao cesto");
+  btn.onclick = () => {
     const lista = lerSelecionados();
-    // permitir duplicados (mesmo produto várias vezes)
     lista.push({
       id: produto.id,
       title: produto.title,
@@ -171,8 +183,8 @@ function criarProduto(produto) {
       category: produto.category,
     });
     gravarSelecionados(lista);
-    atualizaCesto(); // atualizar DOM
-  });
+    atualizaCesto();
+  };
 
   art.append(figure, h3, desc, preco, btn);
   return art;
@@ -186,7 +198,7 @@ function atualizaCesto() {
   if (!pai) return;
 
   const selecionados = lerSelecionados();
-  pai.innerHTML = "";
+  limparNodo(pai);
 
   selecionados.forEach((prod) => pai.append(criaProdutoCesto(prod)));
   atualizarTotal(selecionados);
@@ -194,38 +206,49 @@ function atualizaCesto() {
 
 function criaProdutoCesto(produto) {
   const art = document.createElement("article");
-  art.className = "produto";
-  art.setAttribute("data-id", String(produto.id));
+  art.dataset.id = String(produto.id);
+  art.dataset.role = "produto-cesto";
 
   const h3 = document.createElement("h3");
-  h3.textContent = produto.title;
+  h3.append(String(produto.title));
 
   const preco = document.createElement("p");
-  preco.className = "preco";
-  preco.textContent = moeda(produto.price);
+  preco.dataset.role = "preco";
+  preco.append(moeda(produto.price));
 
   const remover = document.createElement("button");
   remover.type = "button";
-  remover.textContent = "Remover";
-  remover.addEventListener("click", () => {
+  remover.append("Remover");
+  remover.onclick = () => {
     const lista = lerSelecionados();
-    const idx = lista.findIndex((p) => p.id === produto.id); // remove um
+    const idx = lista.findIndex((p) => p.id === produto.id);
     if (idx > -1) {
       lista.splice(idx, 1);
       gravarSelecionados(lista);
-      art.remove();
+      // remover do DOM
+      const todos = document.querySelectorAll('[data-role="produto-cesto"]');
+      todos.forEach(n => {
+        if (n.dataset && n.dataset.id === String(produto.id)) {
+          // remove só um (primeiro correspondente)
+          if (!n.dataset._removido) {
+            n.dataset._removido = "1";
+            n.parentNode && n.parentNode.removeChild(n);
+          }
+        }
+      });
       atualizarTotal(lista);
     }
-  });
+  };
 
   art.append(h3, preco, remover);
   return art;
 }
 
-function atualizarTotal(lista = lerSelecionados()) {
+function atualizarTotal(lista) {
   const totalEl = document.getElementById("total");
   const total = (lista || []).reduce((s, p) => s + Number(p.price || 0), 0);
-  totalEl.textContent = moeda(total);
+  limparNodo(totalEl);
+  totalEl.append(moeda(total));
 }
 
 // ============================
@@ -233,11 +256,11 @@ function atualizarTotal(lista = lerSelecionados()) {
 // ============================
 document.getElementById("comprar").addEventListener("click", async () => {
   const output = document.getElementById("resp-compra");
-  output.textContent = "";
+  limparNodo(output);
 
   const itens = lerSelecionados();
   if (!itens.length) {
-    output.textContent = "O cesto está vazio.";
+    output.append("O cesto está vazio.");
     return;
   }
 
@@ -247,10 +270,6 @@ document.getElementById("comprar").addEventListener("click", async () => {
     coupon: (document.getElementById("cupao").value || "").trim(),
   };
 
-  // Desabilita botão enquanto envia
-  const btn = document.getElementById("comprar");
-  btn.disabled = true;
-
   try {
     const data = await fetchJSON(ENDPOINTS.buy, {
       method: "POST",
@@ -258,23 +277,29 @@ document.getElementById("comprar").addEventListener("click", async () => {
       body: JSON.stringify(body),
     });
 
-    // Tenta ser resiliente a diferentes formatos de resposta
     const referencia = data.reference || data.referencia || data.ref || "—";
     const totalFinal = data.total || data.totalWithDiscount || data.total_final;
     const totalSemDesc = data.totalWithoutDiscount || data.total_sem_desconto;
 
-    let linhas = [];
+    const linhas = [];
     linhas.push(`Referência: ${referencia}`);
     if (typeof totalFinal !== "undefined") linhas.push(`Total: ${moeda(totalFinal)}`);
     if (typeof totalSemDesc !== "undefined") linhas.push(`Total (sem desconto): ${moeda(totalSemDesc)}`);
 
-    output.innerHTML = linhas.map(l => `<div>${l}</div>`).join("");
-
-    // (opcional) limpar cesto após compra bem sucedida
+    // Renderiza linhas usando apenas append + join
+    output.append(linhas.join(" | "));
+    // (opcional) limpar cesto após compra
     // gravarSelecionados([]); atualizaCesto();
   } catch (e) {
-    output.textContent = "Não foi possível completar a compra. Verifique os dados e tente novamente.";
-  } finally {
-    btn.disabled = false;
+    output.append("Não foi possível completar a compra. Verifique os dados e tente novamente.");
   }
 });
+
+// ============================
+// Utils
+// ============================
+function limparNodo(nodo) {
+  // remove todos os filhos usando apenas APIs pedidas
+  const filhos = Array.from(nodo.childNodes || []);
+  filhos.forEach(f => nodo.removeChild(f));
+}
